@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <title>Test</title>
+  </head>
+    
+  <style>
+      .noTransparentText {
+          position: relative;
+          z-index: 1;
+      }
+
+      .noTransparentText .banner {
+          position: absolute;
+          z-index: -1;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-image: url("{{url_for('static', filename='mag.jpg')}}");
+          opacity: .2;
+          width: 100%;
+          height: 100%;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+      }
+      
+  </style>
+    
+  <body onload="updateMyShit()">
+
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="..">Song Fingerprinting</a>
+    </nav>
+      
+    <div class="jumbotron jumbotron-fluid noTransparentText">
+    <div class = "banner"></div>
+
+      <div class = "container-fluid">
+          <br><br>
+          <div class = "row">
+              <div class = "col-lg-1">
+              </div>
+              
+              <div class = "col-lg-10">
+                                            
+                  <center> <h1 class = "display-4"> Your predictions are here. </h1> </center>
+                  <br>
+                  <center><p class = "lead"> {{ out }} </p></center>
+                  <br>
+                  <div class = "row">
+                      
+                      <div class = "col-lg-4 col-sm-4 col-xs-3">
+                      </div>
+
+                      <div class = "col-lg-8 col-sm-8 col-xs-9">
+                          
+                          
+                       
+                          <form action="/start/" method="POST" class = "form-inline">
+
+                              <input class = "form-control mr-sm-2" type="number"; step = "1"; name="length"; value="{{ time }}">
+                              <input class="btn btn-outline-primary" type="submit">
+                          </form>
+                      </div>
+                  </div>
+              </div>
+              
+              <div class = "col-lg-1">
+              </div>
+          </div>
+        </div>
+        <br>
+    </div><!-- /.container -->
+      
+      <div class = "container-fluid">
+          <div class = "row">
+              <center>
+                  <p class = "lead">Listening to the Input</p>
+
+                  <p style = "margin-right:10%; margin-left:10%;text-align:justify">
+                      Upon the activation of the microphone, the microphone samples the pressure waves produced by the sound at a rate of 44,100 times per second. A simple mechanism inside the microphone converts each pressure wave into electrical impulses These electrical impulses, finally, are converted into numbers which can be processed by the program. 
+                  </p>
+                  <br>
+                  <hr>
+                  <br>
+                  <p class = "lead">Giving the Song a "Fingerprint"</p>
+                  <p style = "margin-right:10%; margin-left:10%;text-align:justify">
+                      The program processes the raw data (which represents the frequencies encountered as time goes) via a series of complex mathemetical transformations; mainly discrete Fourier transformations are used. In the transformed data, the program duly notes any "local peaks" within the song. These collection of local peaks will be the "fingerprint" of the excerpt. 
+                  </p>
+                  <br>
+                  <hr>
+                  <br>
+                  <p class = "lead">Finding the Perfect Match</p>
+                  <p style = "margin-right:10%; margin-left:10%;text-align:justify">
+                      The final step in identifying the excerpt will be to match the excerpt with a song in the database. The local peaks calculated in the previous step will be compared with the local peaks of the songs in the database. Whichever song that has the most of these peaks will be deemed the correct song.
+                  </p>
+              
+              </center>
+          </div>
+      </div>      
+     <br><br> 
+      
+    <footer class="footer">
+        <div class="container-fluid"; style ="background-color:#cccccc; padding:5px 0px 5px 0px">
+            <p class="text-muted"><center>Beaver Works Summer Institute | CogWorks 2017 | July 9th, 2017 - August 6th, 2017</center></p>
+        </div>
+    </footer>      
+    <!--
+              <div class = "col-lg-4 border-right border-left">
+                  <br>
+                  <center>
+                  <p class = "lead">Your History</p>
+                  hello2
+                  </center>
+              </div> -->
+      
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+      
+      
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  </body>
+</html>
